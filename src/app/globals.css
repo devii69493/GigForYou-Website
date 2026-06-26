@@ -1,34 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-void-black: #0A0A0F;
-  --color-surface-dark: #13131A;
-  --color-border-subtle: #1E1E2E;
-  --color-electric-violet: #7C3AED;
-  --color-violet-glow: #A78BFA;
-  --color-pure-white: #FFFFFF;
-  --color-muted-gray: #94A3B8;
-  --color-success-green: #10B981;
-  --color-warning-amber: #F59E0B;
+  --color-violet: #7C3AED;
+  --color-violet-light: #8B5CF6;
+  --color-violet-bg: #F5F3FF;
+  --color-green: #059669;
+  --color-amber: #D97706;
   --font-display: 'Clash Display', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-accent: 'JetBrains Mono', monospace;
-}
-
-@font-face {
-  font-family: 'Clash Display';
-  src: url('/fonts/ClashDisplay-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Clash Display';
-  src: url('/fonts/ClashDisplay-Semibold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
 }
 
 * {
@@ -37,71 +17,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: #0A0A0F;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #111827;
   font-family: 'Inter', sans-serif;
-}
-
-@keyframes aurora {
-  0%, 100% {
-    background-position: 0% 50%;
-    opacity: 0.6;
-  }
-  25% {
-    background-position: 50% 0%;
-    opacity: 0.8;
-  }
-  50% {
-    background-position: 100% 50%;
-    opacity: 0.6;
-  }
-  75% {
-    background-position: 50% 100%;
-    opacity: 0.7;
-  }
-}
-
-.aurora-bg {
-  background: radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 80%, rgba(167, 139, 250, 0.15) 0%, transparent 50%);
-  background-size: 200% 200%;
-  animation: aurora 8s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-.gig-card-hover:hover {
-  border-color: rgba(124, 58, 237, 0.5);
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.1);
-}
-
-.category-card-hover:hover {
-  border-image: linear-gradient(135deg, #7C3AED, #3B82F6) 1;
-}
-
-::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #13131A;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1E1E2E;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED;
 }

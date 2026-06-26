@@ -4,76 +4,56 @@ import { useState } from "react";
 import AnimateOnScroll from "./AnimateOnScroll";
 
 const hireSteps = [
-  { step: 1, title: "Search or browse", description: "Find what you need from thousands of skilled professionals.", icon: "🔍" },
-  { step: 2, title: "Review & choose", description: "Check portfolios, read reviews, and pick the right fit.", icon: "📋" },
-  { step: 3, title: "Pay securely", description: "Your payment is held in escrow until the work is done.", icon: "🔒" },
-  { step: 4, title: "Get it done", description: "Approve the work and release payment. Leave a review.", icon: "✅" },
+  { step: 1, title: "Browse or search", description: "Find skilled professionals by category." },
+  { step: 2, title: "Review & choose", description: "Check portfolios and reviews." },
+  { step: 3, title: "Pay securely", description: "Payment held in escrow until work is done." },
+  { step: 4, title: "Approve & review", description: "Release payment when you're happy." },
 ];
 
 const sellSteps = [
-  { step: 1, title: "Create your profile", description: "Sign up free and set up your gig in minutes.", icon: "👤" },
-  { step: 2, title: "Get discovered", description: "Your gig appears in search and category listings.", icon: "🚀" },
-  { step: 3, title: "Deliver & earn", description: "Complete the work and receive 88% of every sale.", icon: "💰" },
-  { step: 4, title: "Grow your reputation", description: "Great reviews bring more clients and higher earnings.", icon: "📈" },
+  { step: 1, title: "Create your profile", description: "Sign up and list your service for free." },
+  { step: 2, title: "Get discovered", description: "Buyers find you through search and categories." },
+  { step: 3, title: "Deliver the work", description: "Complete the gig and get paid." },
+  { step: 4, title: "Grow your reputation", description: "Earn reviews and attract more clients." },
 ];
 
 export default function HowItWorks() {
-  const [activeTab, setActiveTab] = useState<"hire" | "sell">("hire");
-  const steps = activeTab === "hire" ? hireSteps : sellSteps;
+  const [tab, setTab] = useState<"hire" | "sell">("hire");
+  const steps = tab === "hire" ? hireSteps : sellSteps;
 
   return (
-    <section id="how-it-works" className="py-28 bg-surface-dark/30">
-      <div className="mx-auto max-w-4xl px-6">
+    <section id="how-it-works" className="py-20">
+      <div className="mx-auto max-w-3xl px-6">
         <AnimateOnScroll>
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              How It <span className="text-electric-violet">Works</span>
-            </h2>
-            <p className="mt-3 text-muted-gray">
-              Simple for everyone.
-            </p>
+          <h2 className="text-center font-display text-3xl font-bold tracking-tight">
+            How it <span className="text-violet">works</span>
+          </h2>
 
-            <div className="mt-8 flex justify-center">
-              <div className="inline-flex rounded-xl border border-border-subtle bg-void-black p-1">
-                <button
-                  onClick={() => setActiveTab("hire")}
-                  className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all ${
-                    activeTab === "hire"
-                      ? "bg-electric-violet text-pure-white"
-                      : "text-muted-gray hover:text-pure-white"
-                  }`}
-                >
-                  I want to hire
-                </button>
-                <button
-                  onClick={() => setActiveTab("sell")}
-                  className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all ${
-                    activeTab === "sell"
-                      ? "bg-electric-violet text-pure-white"
-                      : "text-muted-gray hover:text-pure-white"
-                  }`}
-                >
-                  I want to sell
-                </button>
-              </div>
+          <div className="mt-8 flex justify-center">
+            <div className="inline-flex rounded-lg border border-gray-200 p-1">
+              <button
+                onClick={() => setTab("hire")}
+                className={`rounded-md px-5 py-2 text-sm font-medium transition-all ${tab === "hire" ? "bg-violet text-white" : "text-gray-500 hover:text-gray-900"}`}
+              >
+                I want to hire
+              </button>
+              <button
+                onClick={() => setTab("sell")}
+                className={`rounded-md px-5 py-2 text-sm font-medium transition-all ${tab === "sell" ? "bg-violet text-white" : "text-gray-500 hover:text-gray-900"}`}
+              >
+                I want to sell
+              </button>
             </div>
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {steps.map((s) => (
-            <AnimateOnScroll key={`${activeTab}-${s.step}`} delay={s.step * 80}>
-              <div className="flex gap-4 rounded-xl border border-border-subtle bg-surface-dark p-5 transition-all hover:border-electric-violet/30">
-                <span className="text-2xl">{s.icon}</span>
-                <div>
-                  <span className="font-accent text-[10px] text-electric-violet">
-                    STEP {s.step}
-                  </span>
-                  <h3 className="text-sm font-semibold text-pure-white">{s.title}</h3>
-                  <p className="mt-1 text-xs text-muted-gray">{s.description}</p>
-                </div>
-              </div>
-            </AnimateOnScroll>
+            <div key={`${tab}-${s.step}`} className="rounded-xl border border-gray-200 bg-white p-5">
+              <span className="font-accent text-xs font-medium text-violet">Step {s.step}</span>
+              <h3 className="mt-1 text-sm font-semibold">{s.title}</h3>
+              <p className="mt-1 text-sm text-gray-500">{s.description}</p>
+            </div>
           ))}
         </div>
       </div>

@@ -18,9 +18,9 @@ export default function AnimateOnScroll({
       ref={ref}
       className={className}
       style={{
-        transform: isInView ? "translateY(0)" : "translateY(40px)",
+        transform: isInView ? "translateY(0)" : "translateY(30px)",
         opacity: isInView ? 1 : 0,
-        transition: `transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transition: `transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
       }}
     >
       {children}
