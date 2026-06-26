@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ onSignUp }: { onSignUp: () => void }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -13,30 +13,18 @@ export default function Navbar() {
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
-          <a
-            href="#categories"
-            className="text-sm text-muted-gray transition-colors hover:text-pure-white"
-          >
+          <a href="#categories" className="text-sm text-muted-gray transition-colors hover:text-pure-white">
             Browse
           </a>
-          <a
-            href="#how-it-works"
-            className="text-sm text-muted-gray transition-colors hover:text-pure-white"
-          >
+          <a href="#how-it-works" className="text-sm text-muted-gray transition-colors hover:text-pure-white">
             How It Works
           </a>
-          <a
-            href="#featured"
-            className="text-sm text-muted-gray transition-colors hover:text-pure-white"
-          >
-            Post a Gig
-          </a>
-          <a
-            href="#cta"
+          <button
+            onClick={onSignUp}
             className="rounded-lg bg-electric-violet px-5 py-2.5 text-sm font-semibold text-pure-white transition-all hover:bg-violet-glow hover:shadow-lg hover:shadow-electric-violet/25"
           >
             Sign Up
-          </a>
+          </button>
         </div>
 
         <button
@@ -44,14 +32,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6">
             {mobileOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -64,34 +45,14 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="border-t border-border-subtle bg-void-black/95 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-4 px-6 py-6">
-            <a
-              href="#categories"
-              className="text-sm text-muted-gray transition-colors hover:text-pure-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              Browse
-            </a>
-            <a
-              href="#how-it-works"
-              className="text-sm text-muted-gray transition-colors hover:text-pure-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              How It Works
-            </a>
-            <a
-              href="#featured"
-              className="text-sm text-muted-gray transition-colors hover:text-pure-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              Post a Gig
-            </a>
-            <a
-              href="#cta"
+            <a href="#categories" className="text-sm text-muted-gray" onClick={() => setMobileOpen(false)}>Browse</a>
+            <a href="#how-it-works" className="text-sm text-muted-gray" onClick={() => setMobileOpen(false)}>How It Works</a>
+            <button
+              onClick={() => { setMobileOpen(false); onSignUp(); }}
               className="rounded-lg bg-electric-violet px-5 py-2.5 text-center text-sm font-semibold text-pure-white"
-              onClick={() => setMobileOpen(false)}
             >
               Sign Up
-            </a>
+            </button>
           </div>
         </div>
       )}
