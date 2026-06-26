@@ -1,3 +1,5 @@
+import AnimateOnScroll from "./AnimateOnScroll";
+
 const trustSignals = [
   {
     icon: (
@@ -50,14 +52,16 @@ export default function TrustSafety() {
   return (
     <section className="py-24 bg-surface-dark/30">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center">
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Trust & <span className="text-electric-violet">Safety</span>
-          </h2>
-          <p className="mt-4 text-lg text-muted-gray">
-            Built-in protections for both buyers and sellers.
-          </p>
-        </div>
+        <AnimateOnScroll>
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Trust & <span className="text-electric-violet">Safety</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-gray">
+              Built-in protections for both buyers and sellers.
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {trustSignals.map((signal) => (
